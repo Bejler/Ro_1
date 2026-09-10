@@ -1,0 +1,232 @@
+:root {
+  --arena:      #F0E4D0;
+  --arena-clara:#FFFBF3;
+  --mar:        #12384F;
+  --mar-suave:  #3C7392;
+  --atardecer:  #E8823C;
+  --radio:      22px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--arena);
+  color: var(--mar);
+  font-family: "Quicksand", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ---------- PORTADA ---------- */
+
+.portada {
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+  padding: 40px 0;
+}
+
+.portada-foto {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: .92;
+  box-shadow: 0 8px 20px rgba(18, 56, 79, .16);
+}
+
+.saludo {
+  font-size: clamp(42px, 13vw, 62px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin: 0 0 14px;
+}
+
+.bajada {
+  margin: 0;
+  font-size: 19px;
+  color: var(--mar-suave);
+  max-width: 34ch;
+}
+
+.desliza {
+  margin: 34px 0 0;
+  font-size: 15px;
+  color: var(--atardecer);
+  font-weight: 600;
+}
+
+.desliza::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 34px;
+  margin: 10px auto 0;
+  background: linear-gradient(var(--atardecer), transparent);
+}
+
+/* ---------- DÍAS ---------- */
+
+.dia { padding: 46px 0 10px; }
+
+.dia-titulo {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dia-nota {
+  margin: 4px 0 0;
+  color: var(--mar-suave);
+  font-size: 16px;
+}
+
+/* ---------- TARJETAS ---------- */
+
+.plan {
+  background: var(--arena-clara);
+  border-radius: var(--radio);
+  overflow: hidden;
+  margin-top: 26px;
+  box-shadow: 0 10px 26px rgba(18, 56, 79, .12);
+}
+
+.fotos {
+  display: grid;
+  gap: 3px;
+  background: var(--arena);
+}
+
+.fotos.dos { grid-template-columns: 1fr 1fr; }
+
+.fotos img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  background: var(--arena);
+}
+
+.fotos.dos img { height: 190px; }
+
+.plan-texto { padding: 22px 24px 26px; }
+
+.hora {
+  margin: 0 0 6px;
+  color: var(--atardecer);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.plan h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.plan p:not(.hora) {
+  margin: 0;
+  color: var(--mar-suave);
+  font-size: 17px;
+}
+
+/* ---------- BOTONES ---------- */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.elegir {
+  margin-top: 20px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid var(--mar);
+  color: var(--mar);
+  font-size: 16px;
+  font-weight: 600;
+  transition: background .18s, color .18s;
+}
+
+.elegir:hover { background: rgba(18, 56, 79, .07); }
+
+.plan.activo {
+  outline: 3px solid var(--atardecer);
+  outline-offset: 0;
+}
+
+.plan.activo .elegir {
+  background: var(--atardecer);
+  border-color: var(--atardecer);
+  color: #fff;
+}
+
+.cierre {
+  text-align: center;
+  padding-top: 60px;
+}
+
+.cierre-texto {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 26px;
+}
+
+.btn-principal, .btn-secundario {
+  display: block;
+  width: 100%;
+  padding: 17px 20px;
+  border-radius: 999px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.btn-principal {
+  background: var(--atardecer);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(232, 130, 60, .32);
+}
+
+.btn-secundario {
+  margin-top: 12px;
+  background: transparent;
+  color: var(--mar-suave);
+  border: 2px solid rgba(60, 115, 146, .4);
+}
+
+.aviso {
+  min-height: 24px;
+  margin: 18px 0 0;
+  font-size: 16px;
+  color: var(--atardecer);
+  font-weight: 600;
+}
+
+/* ---------- ACCESIBILIDAD ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--mar);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
