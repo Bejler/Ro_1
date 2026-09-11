@@ -1,0 +1,231 @@
+:root {
+  --arena:      #F0E4D0;
+  --arena-clara:#FFFBF3;
+  --mar:        #12384F;
+  --mar-suave:  #3C7392;
+  --atardecer:  #E8823C;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--mar);
+  color: var(--arena-clara);
+  font-family: "Quicksand", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  height: 100svh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+/* ---------- PANTALLAS ---------- */
+
+.pantalla {
+  position: relative;
+  min-height: 100svh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 26px 96px;
+  overflow: hidden;
+}
+
+.contenido {
+  position: relative;
+  z-index: 2;
+  max-width: 30ch;
+}
+
+/* fondo fotográfico */
+
+.foto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(9, 30, 42, .92) 0%,
+    rgba(9, 30, 42, .55) 42%,
+    rgba(9, 30, 42, .18) 100%
+  );
+}
+
+/* ---------- TIPOGRAFÍA ---------- */
+
+.sobre-titulo {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--atardecer);
+}
+
+h1, h2 {
+  margin: 0 0 16px;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+}
+
+h1 { font-size: clamp(46px, 14vw, 76px); }
+h2 { font-size: clamp(34px, 10vw, 52px); }
+
+.pantalla p:not(.sobre-titulo):not(.desliza) {
+  margin: 0;
+  font-size: 17.5px;
+  color: rgba(255, 251, 243, .82);
+}
+
+.bajada { font-size: 19px !important; }
+
+.desliza {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  z-index: 2;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 251, 243, .6);
+}
+
+/* ---------- PANTALLA CALMA ---------- */
+
+.calma {
+  background: var(--arena);
+  color: var(--mar);
+}
+
+.calma p:not(.sobre-titulo) { color: var(--mar-suave) !important; }
+
+/* ---------- CIERRE ---------- */
+
+.cierre {
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 130px;
+  background: var(--mar);
+}
+
+.cierre .contenido {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.nosotros {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 22px;
+  opacity: .9;
+}
+
+.hora-cierre {
+  margin-bottom: 30px !important;
+  color: var(--atardecer) !important;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  padding: 17px 34px;
+  border: none;
+  border-radius: 999px;
+  background: var(--atardecer);
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(232, 130, 60, .3);
+}
+
+/* ---------- BOTÓN DE PARTIR ---------- */
+
+.btn-partir {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 26px;
+  padding: 13px 24px 13px 20px;
+  border: 1.5px solid rgba(255, 251, 243, .45);
+  border-radius: 999px;
+  background: rgba(255, 251, 243, .12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--arena-clara);
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.triangulo {
+  width: 0;
+  height: 0;
+  border-left: 11px solid var(--atardecer);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.btn-partir.sonando {
+  border-color: rgba(232, 130, 60, .7);
+  color: var(--atardecer);
+  padding: 13px 24px;
+}
+
+.btn-partir.sonando .triangulo { display: none; }
+
+/* ---------- MÚSICA ---------- */
+
+.musica {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 10;
+  border-radius: 14px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.musica.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* ---------- ACCESIBILIDAD ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--atardecer);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main { scroll-behavior: auto; }
+  .foto::before { transform: none; }
+  .musica { transition: none; }
+}
