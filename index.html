@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sábado en Santa Elena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<main>
+
+  <!-- 1 · PORTADA -->
+  <section class="pantalla foto" style="--img: url('fotos/santa-elena-1.jpg')">
+    <div class="contenido">
+      <p class="sobre-titulo">Sábado</p>
+      <h1>Hola de<br>nuevo, Ro</h1>
+      <p class="bajada">Cambió el plan, y quedó mejor.</p>
+      <button id="partir" class="btn-partir" type="button">
+        <span class="triangulo" aria-hidden="true"></span>
+        Aprieta para darle aire a tu día
+      </button>
+    </div>
+    <p class="desliza" aria-hidden="true">desliza</p>
+  </section>
+
+  <!-- 2 · LA MISIÓN -->
+  <section class="pantalla foto" style="--img: url('fotos/santa-elena-2.jpg')">
+    <div class="contenido">
+      <p class="sobre-titulo">La misión</p>
+      <h2>Santa Elena,<br>Valparaíso</h2>
+      <p>Te acompaño a sacarle las fotos a la casa para tu entrega. Tú mandas: yo cargo cosas, busco ángulos y opino solo si me preguntan.</p>
+    </div>
+  </section>
+
+  <!-- 3 · LO DEMÁS -->
+  <section class="pantalla calma">
+    <div class="contenido">
+      <p class="sobre-titulo">Y lo demás</p>
+      <h2>Conversar,<br>en realidad</h2>
+      <p>Esa es la parte que de verdad me interesa. Si después el tiempo y el ánimo dan para dar una vuelta por ahí, mejor todavía. Y si no, igual valió.</p>
+    </div>
+  </section>
+
+  <!-- 4 · CIERRE -->
+  <section class="pantalla cierre">
+    <div class="contenido">
+      <img class="nosotros" src="fotos/portada.jpg" alt="">
+      <h2>¿Nos vemos?</h2>
+      <p class="hora-cierre">Sábado · HORA</p>
+      <button id="confirmar" class="btn" type="button">Decirle que sí a Cris</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- MÚSICA -->
+<div class="musica" id="musica">
+  <div id="embed-spotify"></div>
+</div>
+
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script src="script.js?v=2"></script>
+</body>
+</html>
